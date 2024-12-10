@@ -1,6 +1,6 @@
 TARGET := jsh
 
-SRCS := main.c command.c file_loc.c history.c
+SRCS := main.c command.c file_loc.c user_input.c
 OBJS := $(SRCS:.c=.o)
 
 CC := gcc
