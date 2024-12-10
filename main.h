@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <termios.h>
+#include <dirent.h>
 
 char *get_file_path(char *file_name);
 char *get_file_loc(char *path, char *file_name);
@@ -24,5 +25,7 @@ char *get_input(void);
 void cleanup_history(void);
 void enable_raw_mode(void);
 void disable_raw_mode(void);
+void handle_tab_completion(char *buffer, int *pos);
+char **get_matching_files(const char *partial_name, int *count);
 
 #endif /* MAIN_H */

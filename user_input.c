@@ -94,7 +94,6 @@ char *get_input(void)
                         if (current_position > 0)
                         {
                             current_position--;
-                            // Clear current line
                             while (pos > 0)
                             {
                                 write(STDOUT_FILENO, "\b \b", 3);
@@ -110,7 +109,6 @@ char *get_input(void)
                         if (current_position < history_count)
                         {
                             current_position++;
-                            // Clear current line
                             while (pos > 0)
                             {
                                 write(STDOUT_FILENO, "\b \b", 3);
@@ -145,6 +143,11 @@ char *get_input(void)
                 buffer[pos] = '\0';
                 write(STDOUT_FILENO, "\b \b", 3);
             }
+            continue;
+        }
+
+        if (c == '\t') {
+            handle_tab_completion(buffer, &pos);
             continue;
         }
 
